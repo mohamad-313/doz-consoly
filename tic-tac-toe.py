@@ -17,7 +17,20 @@ def setMoveInBoard(move, nobat) -> bool:
 
 def showBoard(Board) -> str:
     board = list(Board.values())
-    editedBoard = [ "  ".join(board[ 0 : 3 ]) , "  ".join(board[ 3 : 6 ]) , "  ".join(board[ 6 : 9 ])]
+    Board = []
+    for i in board:
+        res = ""
+        if i == "O":
+            res = color("O", "light_yellow")
+        elif i == "X":
+            res = color("X", "light_red")
+        else:
+            res = color("?", "cyan")
+
+        Board.append(res)
+
+    editedBoard = [ "  ".join(Board[ 0 : 3 ]) , "  ".join(Board[ 3 : 6 ]) , "  ".join(Board[ 6 : 9 ])]
+
     return "\n".join(editedBoard)
 
 def color(text,color):
@@ -58,3 +71,4 @@ while True:
     nobat = "O" if nobat == "X" else "X"
 
 input()
+
